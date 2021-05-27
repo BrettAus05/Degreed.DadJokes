@@ -1,0 +1,40 @@
+﻿@model IndexViewModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+
+    <h4 class="display-4">Welcome to Dad Jokes!</h4>
+
+    <p>&nbsp;</p>
+    
+    @if(Model == null || Model.Connected == false)
+    {
+        <p>
+            This Degreed.DadJokes.Web project requires the Degreed.DadJokes.Api project to be running.<br />
+            The API project needs to run on <a href="@Model.LocalHost/swagger/index.html" target="_blank">@Model.LocalHost</a> <br />
+            If a different URL and / or PORT is needed, please update the appSettings.json file within the Degreed.DadJokes.Web project :)
+        </p>
+    }
+    else
+    {
+        <div class="mx-auto">
+            <div class="row justify-content-center">
+                <div class="input-group w-50 mx-auto">
+                    <input type="text" class="form-control" placeholder="Click the button to get a random joke --->" name="searchTerm" aria-describedby="button-addon2" disabled>
+                    <a class="btn btn-primary" asp-area="" asp-controller="Home" asp-action="RandomJoke">Get A Random Joke</a>
+                </div>
+            </div>
+            <p>&nbsp;</p>
+            <div class="mx-auto">
+                <form action="/Home/SearchJokes" method="get">
+                    <div class="input-group w-50 mx-auto">
+                        <input type="text" class="form-control" placeholder="Please enter a search term" name="searchTerm" aria-describedby="button-addon2">
+                        <button class="btn btn-primary" type="submit">Search for jokes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    }
+</div>

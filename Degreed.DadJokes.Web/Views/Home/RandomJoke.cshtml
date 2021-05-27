@@ -1,0 +1,28 @@
+﻿@model RandomJokeViewModel
+@{
+    ViewData["Title"] = "Random Joke Page";
+}
+
+<div class="text-center">
+    
+    <p>&nbsp;</p>
+    
+    <p style="color:darkgreen"><b>Here is a random joke for you to enjoy!</b></p>
+    
+    <p>&nbsp;</p>
+    
+    @if (Model.Success)
+    {
+        <p class="mx-auto w-75">@Model.Text</p>
+    }
+    else
+    {
+        <h4>Oh no, an error has occurred -</h4>
+        <p>@Model.ErrorMessage</p>
+    }
+    
+    <p>&nbsp;</p>
+    
+    <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Return Home</a>
+
+</div>

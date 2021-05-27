@@ -1,0 +1,65 @@
+﻿@model SearchJokesViewModel
+@{
+    ViewData["Title"] = "Search Jokes Page";
+}
+
+<div class="text-center">
+    <p>&nbsp;</p>
+
+    <p style="color:darkgreen"><b>Here are some jokes matching your search term: @Model.SearchedTerm</b></p>
+
+    @if (Model.Success)
+    {
+        <p style="color:darkgreen"><b>Small Jokes</b></p>
+        
+        @if (Model.SmallJokes.Count() > 0)
+        {
+            foreach (var joke in Model.SmallJokes)
+            {
+                <p class="mx-auto w-75">@joke.Text</p>
+            }
+        }
+        else
+        {
+            <p class="mx-auto w-75">No small jokes found :(</p>
+        }
+
+        <p style="color:darkgreen"><b>Medium Jokes</b></p>
+        
+        @if (Model.MediumJokes.Count() > 0)
+        {
+            foreach (var joke in Model.MediumJokes)
+            {
+                <p class="mx-auto w-75">@joke.Text</p>
+            }
+        }
+        else
+        {
+            <p class="mx-auto w-75">No medium jokes found :(</p>
+        }
+
+        <p style="color:darkgreen"><b>Long Jokes</b></p>
+        
+        @if (Model.LongJokes.Count() > 0)
+        {
+            foreach (var joke in Model.LongJokes)
+            {
+                <p class="mx-auto w-75">@joke.Text</p>
+            }
+        }
+        else
+        {
+            <p class="mx-auto w-75">No long jokes found :(</p>
+        }
+    }
+    else
+    {
+        <h3>Oh no, an error has occurred -</h3>
+        <p class="mx-auto w-75">@Model.ErrorMessage</p>
+    }
+
+    <p>&nbsp;</p>
+
+    <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Return Home</a>
+
+</div>
